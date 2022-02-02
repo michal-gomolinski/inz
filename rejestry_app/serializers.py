@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import BlogPost, Pet, Rejestr 
+from .models import Rejestr 
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -21,28 +21,14 @@ class UserSerializer(serializers.ModelSerializer):
 
         return user
 
-class BlogPostSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField(many=False)
-
-    class Meta:
-        model = BlogPost
-        fields = ('id', 'user', 'date', 'body')
-
-
-class PetSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField(many=False)
-
-    class Meta:
-        model = Pet
-        fields = ('name', 'description', 'user', 'species')
-
 class RejestrSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(many=False)
 
     class Meta:
         model = Rejestr
-        fields = ('user','nazwa_pelna','nazwa_skrocona','dysponent_id',
-                  'podstawa_prawna','przeznaczenie','zakres_info','zakres_lista')
+        fields = ('pk','user','nazwa_pelna','nazwa_skrocona','dysponent_id',
+                  'podstawa_prawna','przeznaczenie','zakres_info','atrybuty_liczba',
+                  'obiekty_liczba')
 
 
 

@@ -1,30 +1,28 @@
 <div class="container">
   <div *ngIf="!token" class="form">
-    <h1>Create your account:</h1>
+    <h1>Stwórz konto:</h1>
     <mat-form-field appearance="fill">
-      <mat-label>Enter your username</mat-label>
+      <mat-label>Nazwa użytkownika</mat-label>
       <input
         matInput
-        placeholder="Username"
         name="login-username"
         [(ngModel)]="user.username"
       /> </mat-form-field
     ><br />
     <mat-form-field appearance="fill">
-      <mat-label>Enter your password</mat-label>
+      <mat-label>Hasło</mat-label>
       <input
         type="password"
         matInput
-        placeholder="Password"
         name="login-password"
         [(ngModel)]="user.password"
       /> </mat-form-field
     ><br />
     <button (click)="login()" mat-stroked-button color="primary">
-      Sign up
+      Rejestracja
     </button>
     <button routerLink="../sign-in" color="primary" mat-button>
-      Already have an account?
+      Już posiadasz konto?
     </button>
   </div>
 

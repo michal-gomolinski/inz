@@ -24,9 +24,9 @@ import { HeaderComponent } from './header/header.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { PetsComponent } from './pets/pets.component';
-import { HumansComponent } from './humans/humans.component';
+
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +34,8 @@ import { ProfileComponent } from './profile/profile.component';
     SigninComponent,
     SignupComponent,
     PetsComponent,
-    HumansComponent,
+
     HomeComponent,
-    ProfileComponent,
   ],
   imports: [
     HttpClientModule,

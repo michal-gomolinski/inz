@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../user.service';
 import { throwError } from 'rxjs';
+import jspdf from 'jspdf';
+import { jsPDF } from 'jspdf';
 @Component({
   selector: 'app-pets',
   templateUrl: './pets.component.html',
   styleUrls: ['./pets.component.scss'],
 })
 export class PetsComponent implements OnInit {
-  public pets;
-  public new_pet: any;
+  public rejestry: any;
+  public rejestr: any;
   constructor(private userService: UserService) {}
   error = false;
   getPets() {
     this.userService.list().subscribe(
       (data) => {
-        this.pets = data;
-        for (let post of this.pets) {
+        console.log(data[0]);
+        this.rejestry = data;
+        for (let post of this.rejestry) {
           post.date = new Date(post.date);
         }
       },
@@ -28,7 +31,7 @@ export class PetsComponent implements OnInit {
   }
 
   createPet() {
-    this.userService.create(this.new_pet, this.userService.token).subscribe(
+    this.userService.create(this.rejestr, this.userService.token).subscribe(
       (data) => {
         this.getPets();
         return true;
@@ -38,9 +41,30 @@ export class PetsComponent implements OnInit {
         return throwError(error);
       }
     );
+    this.rejestr = {};
   }
   ngOnInit(): void {
     this.getPets();
-    this.new_pet = {};
+    this.rejestr = {};
+  }
+  addGroupToggle() {
+    const overlay = document.getElementById('overlay');
+    const modal = document.getElementById('modal');
+    overlay?.classList.toggle('active');
+    modal?.classList.toggle('active');
+  }
+
+  open() {
+    this.rejestr = {};
+    this.addGroupToggle();
+  }
+  submitForm() {
+    this.createPet();
+    this.addGroupToggle();
+  }
+  modify(rej) {
+    this.rejestr = rej;
+    console.log(this.rejestr);
+    this.addGroupToggle();
   }
 }

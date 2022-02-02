@@ -4,6 +4,79 @@
 }
 .form {
   button {
+    display: flex;
     margin: auto;
+  }
+}
+mat-form-field {
+  padding-right: 1em;
+  width: 500px;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+
+  width: 505px;
+  max-width: 80%;
+  padding: 1em;
+
+  form {
+    * {
+      margin: auto;
+    }
+
+    input {
+      color: black;
+    }
+  }
+}
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+#overlay {
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(black, 0.5);
+  pointer-events: none;
+}
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.modal-header {
+  color: black;
+  display: flex;
+  padding-bottom: 1em;
+  * {
+    margin: auto;
+  }
+  button {
+    margin-right: 0;
+  }
+}
+.header {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  h3 {
+    margin-right: 1rem;
+  }
+
+  button {
+    height: 85%;
+    margin-right: 0;
   }
 }

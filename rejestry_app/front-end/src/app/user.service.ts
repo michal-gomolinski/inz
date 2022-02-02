@@ -45,7 +45,7 @@ export class UserService {
       .subscribe(
         (data) => {
           console.log(data);
-          window.alert('Successfully registered accont');
+          window.alert('Udało się utworzyć konto');
           window.location.reload();
         },
         (error) => {
@@ -101,8 +101,9 @@ export class UserService {
         Authorization: 'JWT ' + this.getToken(),
       }),
     };
+    console.log(JSON.stringify(post));
     return this.http.post(
-      this.endpoint + '/api/pets',
+      this.endpoint + '/api/create_rejestr',
       JSON.stringify(post),
       httpOptions
     );
@@ -115,27 +116,6 @@ export class UserService {
         Authorization: 'JWT ' + this.getToken(),
       }),
     };
-    return this.http.get(this.endpoint + '/api/pets-for-user', httpOptions);
-  }
-  createHuman(human: FormData) {
-    let httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'JWT ' + this.getToken(),
-      }),
-    };
-    return this.http.put(this.endpoint + '/api/humans', human, httpOptions);
-  }
-  getProfile() {
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'JWT ' + this.getToken(),
-      }),
-    };
-    return this.http.get(this.endpoint + '/api/profile', httpOptions);
-  }
-
-  listHuman() {
-    return this.http.get(this.endpoint + '/api/humans');
+    return this.http.get(this.endpoint + '/api/rejestry', httpOptions);
   }
 }
